@@ -17,7 +17,7 @@
             // Which plugin to use
             type: jsPsychHtmlButtonResponse,
             // What should be displayed on the screen
-            stimulus: '<p><font size="3">We invite you to participate in a research study on language production and comprehension.</font></p>',
+            stimulus: '<p><font size="3">We invite you to participate in a research study on language perception.</font></p>',
             // What should the button(s) say
             choices: ['Continue']
         };
@@ -27,7 +27,7 @@
         // TODO: edit the instruction form as needed
         const instructions = {
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: "In this experiment, you will watch....<br>When you're ready to begin, press the space bar.",
+            stimulus: "In this experiment, you will watch a series of videos of people discussing varying topics. After each video, there will be a brief survey. <br>When you're ready to begin, press the space bar.",
             choices: [" "]
         };
         timeline.push(instructions);
@@ -114,7 +114,7 @@
         const save_data = {
                     type: jsPsychPipe,
                     action: "save",
-                    experiment_id: "XXXXX", // TODO: replace with your experiment ID
+                    experiment_id: "1.0", // TODO: replace with your experiment ID
                     filename: filename,
                     data_string: ()=>jsPsych.data.get().csv()
                 };
