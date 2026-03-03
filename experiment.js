@@ -78,9 +78,9 @@
                 {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
-                let label = jsPsych.timelineVariable('label');  
-                return `The following disccussion is about the following topic: <br> 
-                ${label}
+                // let label = ;  
+                return `The following video will be a discussion of the question: <br> 
+                <b> ${jsPsych.timelineVariable('label')} </b>
                 <br> <br> When you're ready, press the space bar.
             `},
             choices: [" "]
