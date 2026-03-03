@@ -72,9 +72,6 @@
 
         // Shuffle all trials, then split into two halves
         let shuffled_tv = jsPsych.randomization.shuffle(tv_array);
-        const half = Math.floor(shuffled_tv.length / 2);
-        const first_half = shuffled_tv.slice(0, half);
-        const second_half = shuffled_tv.slice(half);
 
         // Trial template shared by both halves
         const trial_template = [
@@ -103,30 +100,11 @@
         ];
 
         // First half of trials (randomized within half via pre-shuffle)
-        const trials_first_half = {
+        const trials_all = {
             timeline: trial_template,
-            timeline_variables: first_half
+            timeline_variables: shuffled_tv
         }
-        timeline.push(trials_first_half);
-
-        // Intervention video (no description text)
-        const intervention = {
-            type: jsPsychVideoKeyboardResponse,
-            stimulus: ['video/intervention/video.mp4'],
-            width: 640,
-            height: 480,
-            choices: "NO_KEYS",
-            trial_ends_after_video: true,
-            data: { trial_part: 'intervention' }
-        };
-        timeline.push(intervention);
-
-        // Second half of trials (randomized within half via pre-shuffle)
-        const trials_second_half = {
-            timeline: trial_template,
-            timeline_variables: second_half
-        }
-        timeline.push(trials_second_half);
+        timeline.push(trials_all);
 
         const save_data = {
                     type: jsPsychPipe,
