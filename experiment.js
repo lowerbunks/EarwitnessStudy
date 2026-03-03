@@ -102,13 +102,124 @@
                     }
                 },
                 {
-                    type: jsPsychHtmlKeyboardResponse,
-                    choices: [""],
-                    stimulus: "",
-                    response_ends_trial: false,
-                    trial_duration: 1000
-                }
-        ];
+                    type: jsPsychSurvey,
+                    survey_json: {
+                        showQuestionNumbers: false,
+                        elements: 
+                        [
+                            {
+                    "type": "matrix",
+                    "name": "Misc. preferences",
+                    "isRequired": true,
+                    "title": "Please indicate if you agree or disagree with the following statements about the video you just watched:",
+                    "columns": [{
+                        "value": 5,
+                        "text": "Strongly agree"
+                    }, {
+                        "value": 4,
+                        "text": "Agree"
+                    }, {
+                        "value": 3,
+                        "text": "Neutral"
+                    }, {
+                        "value": 2,
+                        "text": "Disagree"
+                    }, {
+                        "value": 1,
+                        "text": "Strongly disagree"
+                    }],
+                    "rows": [
+                        {
+                        "value": "respect",
+                        "text": "These people showed respect for each other"
+                        },
+                        {
+                        "value": "emotional regulation",
+                        "text": "These people regulated their emotions well"
+                        },
+                        {
+                        "value": "listening",
+                        "text": "These people listened to each other"
+                        },
+                        {
+                        "value": "taking turns",
+                        "text": "These people took turns speaking"
+                        },
+                        {
+                        "value": "dialogue civility",
+                        "text": "This dialogue was civil"
+                        },
+                        {
+                        "value": "dialogue productiveness",
+                        "text": "This conversation was an example of productive dialogue"
+                        }
+                        
+                        ],
+                    "alternateRows": true,
+                    "eachRowRequired": true
+                    },
+                    {
+                    "type": "matrix",
+                    "name": "Misc. preferences",
+                    "isRequired": true,
+                    "title": "Please indicate if you agree or disagree with the following statements about the video you just watched:",
+                    "columns": [{
+                        "value": 5,
+                        "text": "Strongly agree"
+                    }, {
+                        "value": 4,
+                        "text": "Agree"
+                    }, {
+                        "value": 3,
+                        "text": "Neutral"
+                    }, {
+                        "value": 2,
+                        "text": "Disagree"
+                    }, {
+                        "value": 1,
+                        "text": "Strongly disagree"
+                    }],
+
+                     "rows":[
+                        {
+                        "value": "safety feeling",
+                        "text": "I felt safe while watching this video"
+                        },
+                        {
+                        "value": "threatened feeling",
+                        "text": "I felt threatened while watching this video"
+                        },
+                        {
+                        "value": "future dialogue preference",
+                        "text": "I would engage in dialogue about this subject in the future"
+                        },
+                        {
+                        "value": "people future dialogue preference",
+                        "text": "I would engage in dialogue with these people in the future"
+                        }
+                    ],
+                    "alternateRows": true,
+                    "eachRowRequired": true
+                    },
+                    {
+                    "type": "rating",
+                    "name": "interruptions amount",
+                    "isRequired": true,
+                    "title": "How many interruptions did this conversation have?",
+                    "rateValues": [ "none", 1, 2, 3, 4, 5, "more than 5" ]
+                    },
+                    {
+                    "type": "rating",
+                    "name": "volume",
+                    "isRequired": true,
+                    "title": "How loud was the conversation?",
+                    "description": "With 1 representing the most quiet and 7 representing the most loud",
+                    "rateValues": [ 1, 2, 3, 4, 5, 6, 7]
+                    }
+                ]
+            }
+        },
+    ] 
 
         // Constructing all the trials
         const trials_all = {
@@ -119,12 +230,12 @@
 
         
         // Pre-questionairre landing page
-        const pre_exit_survey = {
+        const pre_exit_survey_landing_page = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: "Thank you for participating in this experiment. Before you leave, please complete the following demographic questionnaire. <br>When you're ready to proceed, press the space bar.",
             choices: [" "]
         };
-        timeline.push(pre_exit_survey);
+        timeline.push(pre_exit_survey_landing_page);
 
 
         // Final questionairre
