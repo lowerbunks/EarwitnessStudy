@@ -70,11 +70,20 @@
             tv_array[i].label_category = labels[index][0];
         }
 
-        // Shuffle all trials, then split into two halves
+        // Shuffle all trials
         let shuffled_tv = jsPsych.randomization.shuffle(tv_array);
 
         // Trial template shared by both halves
         const trial_template = [
+                {
+            type: jsPsychHtmlKeyboardResponse,
+            stimulus: `
+            The following disccussion is about the following topic: <br> 
+            ${jsPsych.timelineVariable('label')}
+            <br> <br> When you're ready, press the space bar.
+            `,
+            choices: [" "]
+                },
                 {
                     type: jsPsychVideoKeyboardResponse,
                     stimulus: jsPsych.timelineVariable('stimulus'),
@@ -87,7 +96,8 @@
                         return `<p><b>${label}</b></p>`;
                     },
                     data: {
-                        label: jsPsych.timelineVariable('label')
+                        label: jsPsych.timelineVariable('label'),
+                        label_category: jsPsych.timelineVariable('label_category')
                     }
                 },
                 {
