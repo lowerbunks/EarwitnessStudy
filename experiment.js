@@ -38,7 +38,21 @@
         // equally often across participants.
         // With 3 labels and N videos, there are 3 rotations.
         // Each participant is assigned to a rotation based on their subject_id.
-        const labels = ["Description A", "Description B", "Description C"];
+        Benign = [
+            'Benign',
+            'Which Star Wars movie is the best?',
+            'Who is the best basketball player of all time?',
+            'Is "Die Hard" a Christmas movie?',
+            'Does pineapple belong on pizza?'
+        ]
+        Charged = [
+            'Charged',
+            'Should abortion be legal?',
+            'Should the death penalty be abolished?',
+            'Should same-sex marriage be legal?',
+            'Should gun control laws be stricter?'
+        ]
+        const labels = [Benign, Charged];
 
         // Determine rotation from subject_id (hash the ID to get a stable number)
         let idSum = 0;
@@ -49,8 +63,11 @@
 
         // Assign labels using Latin Square rotation:
         // Video i gets label at index (i + rotation) % labels.length
+        // Each video receives property label_category with the category of the label
         for (let i = 0; i < tv_array.length; i++) {
-            tv_array[i].label = labels[(i + rotation) % labels.length];
+            index = (i + rotation) % labels.length;
+            tv_array[i].label = labels[index][Math.floor(Math.random() * 4)+1];
+            tv_array[i].label_category = labels[index][0];
         }
 
         // Shuffle all trials, then split into two halves
