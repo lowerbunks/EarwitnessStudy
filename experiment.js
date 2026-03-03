@@ -27,7 +27,7 @@
         // TODO: edit the instruction form as needed
         const instructions = {
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: "In this experiment, you will watch a series of videos of people discussing varying topics. After each video, there will be a brief survey. <br>When you're ready to begin, press the space bar.",
+            stimulus: "In this experiment, you will watch a series of videos of people discussing varying topics. The videos will have audio. After each video, there will be a brief survey. <br>When you're ready to proceed, press the space bar.",
             choices: [" "]
         };
         timeline.push(instructions);
@@ -110,17 +110,144 @@
                 }
         ];
 
-        // First half of trials (randomized within half via pre-shuffle)
+        // Constructing all the trials
         const trials_all = {
             timeline: trial_template,
             timeline_variables: shuffled_tv
         }
         timeline.push(trials_all);
 
+        
+        // Pre-questionairre landing page
+        const pre_exit_survey = {
+            type: jsPsychHtmlKeyboardResponse,
+            stimulus: "Thank you for participating in this experiment. Before you leave, please complete the following demographic questionnaire. <br>When you're ready to proceed, press the space bar.",
+            choices: [" "]
+        };
+        timeline.push(pre_exit_survey);
+
+
+        // Final questionairre
+        const exit_survey = {
+            type: jsPsychSurvey,
+            survey_json: {
+                showQuestionNumbers: false,
+                elements: 
+                [
+                    {
+                    "type": "dropdown",
+                    "isRequired": true,
+                    "choices":[
+                        "Yes", "No"
+                    ],
+                    "name": "German proficiency",
+                    "title": "Are you proficient in German?",
+                    },
+                    {
+                    "type": "dropdown",
+                    "isRequired": true,
+                    "choices":[
+                        "Yes", "No"
+                    ],
+                    "name": "American identity",
+                    "title": "Are you of American identity?",
+                    },
+                    {
+                    "type": "dropdown",
+                    "isRequired": true,
+                    "choices":[
+                        "Yes", "No"
+                    ],
+                    "name": "American culture",
+                    "title": "Are you connected to American culture?",
+                    },
+                    {
+                    "type": "dropdown",
+                    "isRequired": true,
+                    "choices":[
+                        "Republican", "Democrat", "Independent", "Other"
+                    ],
+                    "name": "political affiliation",
+                    "title": "Which of the following best describes your political affiliation?",
+                    },
+
+                    {
+                    "type": "matrix",
+                    "name": "Misc. preferences",
+                    "isRequired": true,
+                    "title": "Please indicate if you agree or disagree with the following statements",
+                    "columns": [{
+                        "value": 5,
+                        "text": "Strongly agree"
+                    }, {
+                        "value": 4,
+                        "text": "Agree"
+                    }, {
+                        "value": 3,
+                        "text": "Neutral"
+                    }, {
+                        "value": 2,
+                        "text": "Disagree"
+                    }, {
+                        "value": 1,
+                        "text": "Strongly disagree"
+                    }],
+                    "rows": [
+                        {
+                        "value": "personal opinion strength",
+                        "text": "I have strong opinions about politics "
+                        },
+                        {
+                        "value": "personal calmness",
+                        "text": "I remain calm during discussions"
+                        },
+                        {
+                        "value": "overall safety",
+                        "text": "I felt safe watching these videos"
+                        },
+                        {
+                        "value": "overall threatened",
+                        "text": "I felt threatened watching these videos"
+                        },
+                        {
+                        "value": "personal future civic dialogue preference",
+                        "text": "I wish to engage in future civic dialogue"
+                        },
+                        {
+                        "value": "personal disagreement value preference",
+                        "text": "I think disagreement is valuable"
+                        }
+                    ],
+                    "alternateRows": true,
+                    "eachRowRequired": true
+                    },
+
+                    {
+                    "type": "rating",
+                    "name": "video accuracy rating",
+                    "title": "What percentage of videos were accurately labeled?",
+                    "rateValues": ['0%', '25%', '50%', '75%', '100%'],
+                    "isRequired": true
+                    },
+
+
+                    {
+                        "name": "comments",
+                        "type": "text",
+                        "title": "Any other comments or feedback about the experiment?",
+                    }
+                ]
+
+            }
+        }
+        timeline.push(exit_survey);
+
+
+
         const save_data = {
                     type: jsPsychPipe,
                     action: "save",
-                    experiment_id: "1.0", // TODO: replace with your experiment ID
+                    experiment_id: "KuGz7gOrcAJ6", // TODO: replace with your experiment ID
                     filename: filename,
                     data_string: ()=>jsPsych.data.get().csv()
                 };
