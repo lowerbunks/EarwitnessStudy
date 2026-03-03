@@ -17,7 +17,7 @@
             // Which plugin to use
             type: jsPsychHtmlButtonResponse,
             // What should be displayed on the screen
-            stimulus: '<p><font size="3">We invite you to participate in a research study on language perception.</font></p>',
+            stimulus: '<p><font size="3">We invite you to participate in a research study on perception.</font></p>',
             // What should the button(s) say
             choices: ['Continue']
         };
@@ -77,11 +77,12 @@
         const trial_template = [
                 {
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: `
-            The following disccussion is about the following topic: <br> 
-            ${jsPsych.timelineVariable('label')}
-            <br> <br> When you're ready, press the space bar.
-            `,
+            stimulus: function () {
+                let label = jsPsych.timelineVariable('label');  
+                return `The following disccussion is about the following topic: <br> 
+                ${label}
+                <br> <br> When you're ready, press the space bar.
+            `},
             choices: [" "]
                 },
                 {
