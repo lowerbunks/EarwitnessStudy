@@ -1,6 +1,6 @@
 
         const jsPsych = initJsPsych({
-            show_progress_bar: true,
+            show_progress_bar: false,
             on_finish: function(data) {
             window.location.href = 'finish.html';
             }
@@ -27,7 +27,7 @@
         // TODO: edit the instruction form as needed
         const instructions = {
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: "In this experiment, you will watch a series of videos of people discussing varying topics. The videos will have audio. After each video, there will be a brief survey. <br>When you're ready to proceed, press the space bar.",
+            stimulus: "In this experiment, you will watch a series of videos of people discussing varying topics. The videos will have audio, so please be in a quiet location. After each video, there will be a brief survey. <br>When you're ready to proceed, press the space bar.",
             choices: [" "]
         };
         timeline.push(instructions);
@@ -73,6 +73,10 @@
         // Shuffle all trials
         let shuffled_tv = jsPsych.randomization.shuffle(tv_array);
 
+
+        const columnWidth = "1px"
+        const columnWidth2 = "200px"
+        const rowTitleWidth = "350px"
         // Trial template shared by both halves
         const trial_template = [
                 {
@@ -108,42 +112,53 @@
                         elements: 
                         [
                             {
+                    "rowTitleWidth": rowTitleWidth,
                     "type": "matrix",
                     "name": "Misc. preferences",
                     "isRequired": true,
                     "title": "Please indicate if you agree or disagree with the following statements about the video you just watched:",
                     "columns": [{
                         "value": 5,
-                        "text": "Strongly agree"
+                        "text": "Strongly agree",
+                        "width": columnWidth,
+                        "columnMinWidth": columnWidth
                     }, {
                         "value": 4,
-                        "text": "Agree"
+                        "text": "Agree",
+                        "width": columnWidth,
+                        "columnMinWidth": columnWidth
                     }, {
                         "value": 3,
-                        "text": "Neutral"
+                        "text": "Neutral",
+                        "width": columnWidth,
+                        "columnMinWidth": columnWidth
                     }, {
                         "value": 2,
-                        "text": "Disagree"
+                        "text": "Disagree",
+                        "width": columnWidth,
+                        "columnMinWidth": columnWidth
                     }, {
                         "value": 1,
-                        "text": "Strongly disagree"
+                        "text": "Strongly disagree",
+                        "width": columnWidth,
+                        "columnMinWidth": columnWidth
                     }],
                     "rows": [
                         {
                         "value": "respect",
-                        "text": "These people showed respect for each other"
+                        "text": "Each person showed respect for the other"
                         },
                         {
                         "value": "emotional regulation",
-                        "text": "These people regulated their emotions well"
+                        "text": "In this conversation, they failed to effectively communciate because of their emotions"
                         },
                         {
                         "value": "listening",
-                        "text": "These people listened to each other"
+                        "text": "Each person listened to the other"
                         },
                         {
                         "value": "taking turns",
-                        "text": "These people took turns speaking"
+                        "text": "Each person took turns speaking"
                         },
                         {
                         "value": "dialogue civility",
@@ -151,36 +166,8 @@
                         },
                         {
                         "value": "dialogue productiveness",
-                        "text": "This conversation was an example of productive dialogue"
-                        }
-                        
-                        ],
-                    "alternateRows": true,
-                    "eachRowRequired": true
-                    },
-                    {
-                    "type": "matrix",
-                    "name": "Misc. preferences",
-                    "isRequired": true,
-                    "title": "Please indicate if you agree or disagree with the following statements about the video you just watched:",
-                    "columns": [{
-                        "value": 5,
-                        "text": "Strongly agree"
-                    }, {
-                        "value": 4,
-                        "text": "Agree"
-                    }, {
-                        "value": 3,
-                        "text": "Neutral"
-                    }, {
-                        "value": 2,
-                        "text": "Disagree"
-                    }, {
-                        "value": 1,
-                        "text": "Strongly disagree"
-                    }],
-
-                     "rows":[
+                        "text": "This conversation helped the participants make progress in shared understanding"
+                        },
                         {
                         "value": "safety feeling",
                         "text": "I felt safe while watching this video"
@@ -197,7 +184,7 @@
                         "value": "people future dialogue preference",
                         "text": "I would engage in dialogue with these people in the future"
                         }
-                    ],
+                        ],
                     "alternateRows": true,
                     "eachRowRequired": true
                     },
