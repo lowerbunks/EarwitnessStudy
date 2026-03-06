@@ -195,6 +195,7 @@
                     "isRequired": true,
                     "title": "How many interruptions did this conversation have?",
                     "rateValues": [ 0, 1, 2, 3, 4, 5, "6+"]
+                    },
                     {
                     "type": "rating",
                     "name": "volume",
