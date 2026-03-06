@@ -85,7 +85,8 @@
                 // let label = ;  
                 return `The following video will be a discussion of the question: <br> 
                 <b> ${jsPsych.timelineVariable('label')} </b>
-                <br> <br> When you're ready, press the space bar.
+                <br> <br> When you're ready, press the space bar. 
+                <br> The video may take a moment to load, so please be patient. 
             `},
             choices: [" "]
                 },
