@@ -43,13 +43,13 @@
             'Which Star Wars movie is the best?',
             'Who is the best basketball player of all time?',
             'Is "Die Hard" a Christmas movie?',
-            'Does pineapple belong on pizza?'
+            'Does pineapple belong on pizza?' 
         ]
         Charged = [
             'Charged',
-            'Should abortion be legal?',
+            'Should abortion be legal?', 
             'Should the death penalty be abolished?',
-            'Should same-sex marriage be legal?',
+            'Should same-sex marriage be legal?', 
             'Should gun control laws be stricter?'
         ]
         const labels = [Benign, Charged];
@@ -59,15 +59,32 @@
         for (let c = 0; c < subject_id.length; c++) {
             idSum += subject_id.charCodeAt(c);
         }
-        const rotation = idSum % labels.length;
+        const videoRotation = idSum % labels.length;
+        let BlabelRotation = Math.floor(Math.random() * 4);
+        let ClabelRotation = Math.floor(Math.random() * 4); 
 
         // Assign labels using Latin Square rotation:
         // Video i gets label at index (i + rotation) % labels.length
         // Each video receives property label_category with the category of the label
         for (let i = 0; i < tv_array.length; i++) {
-            index = (i + rotation) % labels.length;
-            tv_array[i].label = labels[index][Math.floor(Math.random() * 4)+1];
-            tv_array[i].label_category = labels[index][0];
+            index = (i + videoRotation) % labels.length;
+
+            category = labels[index][0];
+            tv_array[i].label_category = category;
+
+            if (category == 'Benign'){
+                labelRotation = BlabelRotation;
+                BlabelRotation += 1;
+            } else if (category == 'Charged'){
+                labelRotation = ClabelRotation;
+                ClabelRotation += 1;
+            }
+
+            labelRotation = labelRotation % 4; // 4 questions per category
+            labelRotation += 1; // +1 to skip the category name at index 0
+
+            tv_array[i].label = labels[index][labelRotation];
+            
         }
 
         // Shuffle all trials
