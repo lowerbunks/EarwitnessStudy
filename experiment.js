@@ -17,7 +17,7 @@
             // Which plugin to use
             type: jsPsychHtmlButtonResponse,
             // What should be displayed on the screen
-            stimulus: '<p><font size="3">We invite you to participate in a research study on perception.</font></p> <br> P.S: This survey contains Karma to get free survey responses at SurveySwap.io',
+            stimulus: '<p><font size="3">We invite you to participate in a research study on foreign language perception.</font></p> <br> P.S: This survey contains Karma to get free survey responses at SurveySwap.io',
             // What should the button(s) say
             choices: ['Continue']
         };
@@ -27,7 +27,7 @@
         // TODO: edit the instruction form as needed
         const instructions = {
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: "In this experiment, you will watch a series of videos of people discussing varying topics. The videos will have audio, so please be in a quiet location. After each video, there will be a brief survey. <br>The conversation will be in German. You do not have to understand German to participate in this survey. <br>When you're ready to proceed, press the space bar.",
+            stimulus: "In this experiment, you will watch a series of videos of people discussing varying topics. The videos will have audio, so please be in a quiet location. After each video, there will be a brief survey. <br>The conversation will be in German. You are not expected to understand German. <br>When you're ready to proceed, press the space bar.",
             choices: [" "]
         };
         timeline.push(instructions);
