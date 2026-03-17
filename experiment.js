@@ -17,7 +17,7 @@
             // Which plugin to use
             type: jsPsychHtmlButtonResponse,
             // What should be displayed on the screen
-            stimulus: '<p><font size="3">We invite you to participate in a research study on perception.</font></p>',
+            stimulus: '<p><font size="3">We invite you to participate in a research study on perception.</font></p> <br> P.S: This survey contains Karma to get free survey responses at SurveySwap.io',
             // What should the button(s) say
             choices: ['Continue']
         };
