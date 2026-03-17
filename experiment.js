@@ -27,7 +27,7 @@
         // TODO: edit the instruction form as needed
         const instructions = {
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: "In this experiment, you will watch a series of videos of people discussing varying topics. The videos will have audio, so please be in a quiet location. After each video, there will be a brief survey. <br>When you're ready to proceed, press the space bar.",
+            stimulus: "In this experiment, you will watch a series of videos of people discussing varying topics. The videos will have audio, so please be in a quiet location. After each video, there will be a brief survey. <br>The conversation will be in German. You do not have to understand German to participate in this survey. <br>When you're ready to proceed, press the space bar.",
             choices: [" "]
         };
         timeline.push(instructions);
